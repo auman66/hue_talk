@@ -1,6 +1,5 @@
 //
-// Code written by Techie Delight
-// Source: https://www.techiedelight.com/validate-ip-address/
+// Created by alex on 5/22/20.
 //
 
 #include "input_check.h"
@@ -8,6 +7,32 @@
 #include <vector>
 #include <string>
 using namespace std;
+
+bool validatePort(string p) {
+    int port;
+    try {
+        port = stoi(p);
+    }
+    catch(invalid_argument const &e){
+        return false;
+    }
+    catch(out_of_range const &e){
+        return false;
+    }
+    return true;
+}
+
+bool validateUn(string un) {
+    for (int i = 0; i <= un.size(); ++i){
+        if (isspace(un[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+// The following three functions were written by Techie Delight
+// Source: https://www.techiedelight.com/validate-ip-address/
 
 // check if given string is a numeric string or not
 bool isNumber(const string& str)
@@ -59,41 +84,3 @@ bool validateIP(string ip)
 
     return true;
 }
-
-bool validatePort(string p) {
-    int port;
-    try {
-        port = stoi(p);
-    }
-    catch(invalid_argument const &e){
-        return false;
-    }
-    catch(out_of_range const &e){
-        return false;
-    }
-    return true;
-}
-
-bool validateUn(string un) {
-    for (int i = 0; i <= un.size(); ++i){
-        if (isspace(un[i])){
-            return false;
-        }
-    }
-    return true;
-}
-
-//// Validate an IP address in C++
-//int main()
-//{
-//    string ip = "14.8.9.28";
-//    // string ip = "100.xyz.1.15";
-//    // string ip = "115.300.10.60";
-//
-//    if (validateIP(ip))
-//        cout << "Valid IP Address";
-//    else
-//        cout << "Invalid IP Address";
-//
-//    return 0;
-//}

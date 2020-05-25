@@ -11,7 +11,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-
+//class to make API calls
 HueLink::HueLink (string  ip, int port, string  username)
         : ip(ip),
           port(port),
@@ -20,6 +20,7 @@ HueLink::HueLink (string  ip, int port, string  username)
     base_url = "http://" + ip + ":" + to_string(port) + "/api";
 }
 
+//Get all the lights from API
 json HueLink::getAllLights() {
     auto r_all= cpr::Get(cpr::Url{base_url+"/"+username+"/lights"});
     json res_all = json::parse(r_all.text);
@@ -41,6 +42,7 @@ json HueLink::getAllLights() {
     return lights;
 }
 
+//Wrapper to handle errors from the getAllLights function
 int HueLink::getAllLights_wrapper(json &lights){
     if (username.empty()){
         auto newUn = newUsername();
@@ -87,6 +89,7 @@ int HueLink::getAllLights_wrapper(json &lights){
     return 0;
 }
 
+//API request to get a new username
 json HueLink::newUsername() {
     cout << "Please push the link button in the next 60 seconds" << endl;
     json body;
@@ -109,6 +112,7 @@ json HueLink::newUsername() {
     return json();
 }
 
+//function to get changes to lights
 int HueLink::lightsUpdate(json &lights, json &changes) {
     vector<string> updated_ids;
     json new_lights;
