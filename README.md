@@ -1,4 +1,4 @@
-# Hue Talk - seeing whats up with our smart lightbulb friends
+# Hue Talk - seeing what's up with our smart lightbulb friends
 
 This program integrates with the Philips Hue platform. The id, name, on status, and brightness for all lights are displayed. The program then runs continuously and displays any changes to the light’s status. 
 
