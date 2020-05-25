@@ -25,7 +25,7 @@ p <port number>         : Designate a port number for the connection
 Example usage:
 
 ```sh
-$ ./hue_talk 192.168.0.2 -p 80 -u my_hue_username
+./hue_talk 192.168.0.2 -p 80 -u my_hue_username
 ```
 
 ## Steps to Install:
